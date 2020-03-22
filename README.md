@@ -5,9 +5,10 @@ See the Coronavirus cases all over the world
 ## Data Resource
 [mathdroid/covid19](https://github.com/mathdroid/covid19).
 
-## Sample Screenshots
+## Screenshots
 
 ![alt text](assets/sc/world.JPG)
+
 
 ![alt text](assets/sc/country.JPG)
 
