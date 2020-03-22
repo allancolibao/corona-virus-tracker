@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head tag -->
+    <%- include ('header') %>
+    <!-- End of head tag -->
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="text-dark" href="/"><h3 class="my-0 mr-md-auto font-weight-normal">Coronavirus All Over the World</h3></a>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="https://arcdev.me/">Visit me</a>
+                <a class="p-2 text-dark" href="https://github.com/mathdroid/covid19">Resources</a>
+            </nav>
+        </div>
+      </div>
+    <!-- End of navigation bar -->
+
+    <!-- Main section -->
+    <div class="container">
+        <h1 class="display-4 text-center pt-3">Total cases in <%= country%></h1>
+        <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-warning text-white">
+              <h4 class="my-0 font-weight-normal">Confirmed</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title text-warning"><%= data.confirmed.value%></h1>
+              
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+              <h4 class="my-0 font-weight-normal">Recovered</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title text-success"><%= data.recovered.value%></h1>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-danger text-white">
+              <h4 class="my-0 font-weight-normal">Deaths</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title text-danger"><%= data.deaths.value%></h1>
+            </div>
+        </div>
+    </div>
+    <!-- End of main section -->
+
+    <!-- Search per country -->
+    <div class="d-flex justify-content-center">
+      <form class="form-search" action="/country">
+          <div class="container">
+              <div class="col-md-12">
+                <div class="text-center mb-4">
+                  <h1 class="h3 mb-3 font-weight-normal">Search by country</h1>
+                </div>
+                  <div class="form-group">
+                      <label for="country" class="sr-only">Select country</label>
+                      <select type="text" id="country" name="country" class="form-control" placeholder="Select country" required>
+                              <option value="">Select country</option>
+                              <% for(var i=0; i < countries.length; i++) { %>
+                                  <option value="<%=countries[ i ] %>"><%= countries[i] %></option>
+                              <% } %>
+                      </select>   
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-lg btn-block btn-dark" onclick="foo(document.getElementById('country').value = country )">Search</button>
+                  </div>
+              </div>
+          </div>
+      </form>
+    </div>
+    <!-- End of per country -->
+
+    <!-- Last update -->
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="media text-muted pt-3 text-right">
+          <p class="media-body pb-3 mb-0 small lh-125">
+            Last update: <%= data.lastUpdate%>
+          </p>
+        </div>
+    </div>
+    <!-- End of last update -->
+
+    <!-- Footer -->
+    <%- include ('footer') %>
+    <!-- End of footer -->
+</body>
+</html>
