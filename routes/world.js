@@ -11,9 +11,11 @@ exports.world = function(req, res) {
       ])
       .then(axios.spread((worldRes, countriesRes) => {
 
-        let countryKey = Object.keys(countriesRes.data.countries);
+        let countryKey = Object.values(countriesRes.data.countries);
+  
+        let country = countryKey.map(item => item.name)
 
-        res.render('world.ejs', {data:worldRes.data, countries:countryKey});
+        res.render('world.ejs', {data:worldRes.data, countries:country});
       })).catch(error =>{
         console.log(error);
     });
