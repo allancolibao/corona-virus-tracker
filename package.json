@@ -4,7 +4,8 @@
   "description": "Fetching data from covid19 api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "Allan Colibao",
   "license": "ISC",
