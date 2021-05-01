@@ -16,7 +16,7 @@ countryRouter.route('/')
 .get((req, res, next) => {
   axios.all([
       axios.get(`${url}/countries/${req.query.country}`),
-      axios.get(url)
+      axios.get(`${url}/countries`)
     ])
     .then(axios.spread((countryRes, countryList) => {
 
@@ -24,7 +24,7 @@ countryRouter.route('/')
 
       let country = countryKey.map(item => item.name)
 
-      console.log(req.query.country);
+      console.log(country);
 
       res.render('country', {data:countryRes.data, countries:country, country:req.query.country });
     })).catch(error =>{
