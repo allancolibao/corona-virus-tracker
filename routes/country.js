@@ -1,22 +1,35 @@
 const express = require('express');
-const router = express.Router();
+const bodyParser = require('body-parser');
+const countryRouter = express.Router();
 const axios = require('axios'); 
-const url = 'https://covid19.mathdro.id/api/countries/';
 
+const url = process.env.NODE_APP_BASE_URL;
 
-exports.country = function(req, res) {
-    axios.all([
-        axios.get(url + req.query.country),
-        axios.get(url)
-      ])
-      .then(axios.spread((countryRes, countryList) => {
+countryRouter.use(bodyParser.json());
 
-        let countryKey = Object.values(countryList.data.countries);
+countryRouter.route('/')
+.all((req, res, next) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  next();
+})
+.get((req, res, next) => {
+  axios.all([
+      axios.get(`${url}/countries/${req.query.country}`),
+      axios.get(url)
+    ])
+    .then(axios.spread((countryRes, countryList) => {
 
-        let country = countryKey.map(item => item.name)
+      let countryKey = Object.values(countryList.data.countries);
 
-        res.render('country.ejs', {data:countryRes.data, countries:country, country:req.query.country });
-      })).catch(error =>{
-        res.render('error.ejs', {country:req.query.country });
-    });
-}
+      let country = countryKey.map(item => item.name)
+
+      console.log(req.query.country);
+
+      res.render('country', {data:countryRes.data, countries:country, country:req.query.country });
+    })).catch(error =>{
+      res.render('error', {country:req.query.country });
+  });
+});
+
+module.exports = countryRouter;

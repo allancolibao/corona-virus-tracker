@@ -7,10 +7,10 @@ See the Coronavirus cases all over the world
 
 ## Screenshots
 
-![alt text](assets/sc/world.JPG)
+![alt text](assets/img/screenshot/world.JPG)
 
 
-![alt text](assets/sc/country.JPG)
+![alt text](assets/img/screenshot/country.JPG)
 
 
 Thank you!

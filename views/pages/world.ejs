@@ -8,16 +8,7 @@
 <body>
 
     <!-- Navigation bar -->
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <div class="container">
-            <a class="text-dark" href="/"><h3 class="my-0 mr-md-auto font-weight-normal">Coronavirus All Over the World</h3></a>
-            <nav class="my-2 my-md-0 mr-md-3">
-              <a class="p-2 text-dark" href="https://arcdev.me/">Visit me</a>
-              <a class="p-2 text-dark" href="https://github.com/mathdroid/covid19">Resources</a>
-            </nav>
-        </div>
-        
-      </div>
+    <%- include ('nav') %>
     <!-- End of navigation bar -->
 
     <!-- About corona  -->
@@ -57,7 +48,7 @@
               <h4 class="my-0 font-weight-normal">Confirmed</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title text-warning"><%= data.confirmed.value%></h1>
+              <h1 class="card-title text-warning"><%= data.confirmed.value.toLocaleString()%></h1>
               
             </div>
           </div>
@@ -66,7 +57,7 @@
               <h4 class="my-0 font-weight-normal">Recovered</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title text-success"><%= data.recovered.value%></h1>
+              <h1 class="card-title text-success"><%= data.recovered.value.toLocaleString()%></h1>
             </div>
           </div>
           <div class="card mb-4 shadow-sm">
@@ -74,7 +65,7 @@
               <h4 class="my-0 font-weight-normal">Deaths</h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title  text-danger"><%= data.deaths.value%></h1>
+              <h1 class="card-title  text-danger"><%= data.deaths.value.toLocaleString()%></h1>
             </div>
         </div>
     </div>
