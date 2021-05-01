@@ -1,10 +1,12 @@
+'use strict';
+
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
 const app = express();
-const port = 3000
+const port = process.env.PORT || 3000;
 
 require('dotenv').config()
 
